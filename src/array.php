@@ -98,6 +98,30 @@ $products = array(
         echo"</table>";
 
     }
+    function display2(){
+      global $products;
+
+      echo"<table><tr><th>Category</th><th>Subcategory</th><th>ID</th><th>Name</th><th>Brand</th><tr>";
+      foreach($products as $key=>$value){
+
+          foreach($value as $subk=>$val){
+              if($subk=="Mobile")
+
+              foreach($val as $i ){
+
+                  echo"<tr><td>".$key."</td>".
+                 " <td>".$subk."</td>".
+                  "<td>".$i["id"]."</td>".
+                  "<td>".$i["name"]."</td>".
+                  "<td>".$i["brand"]."</td></tr>";
+                 }
+                }
+
+      }
+      echo"</table>";
+
+  }
+
     
   
 
@@ -115,6 +139,9 @@ $products = array(
     <?php
 
     display1();
+    echo "<h2>Display mobile category</h2>";
+    display2();
+
    
     ?>
 
