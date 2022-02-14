@@ -121,6 +121,30 @@ $products = array(
       echo"</table>";
 
   }
+  function display3(){
+    global $products;
+
+    echo"<table><tr><th>Category</th><th>Subcategory</th><th>ID</th><th>Name</th><th>Brand</th><tr>";
+    foreach($products as $key=>$value){
+
+        foreach($value as $subk=>$val){
+           
+
+            foreach($val as $i ){
+                if($i["brand"]=="Samsung"){
+                echo"<tr><td>".$key."</td>".
+               " <td>".$subk."</td>".
+                "<td>".$i["id"]."</td>".
+                "<td>".$i["name"]."</td>".
+                "<td>".$i["brand"]."</td></tr>";
+            }
+               }
+              }
+
+    }
+    echo"</table>";
+
+}
 
     
   
@@ -141,7 +165,8 @@ $products = array(
     display1();
     echo "<h2>Display mobile category</h2>";
     display2();
-
+    echo "<h2>Display filter name category</h2>";
+display3();
    
     ?>
 
