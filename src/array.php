@@ -99,55 +99,86 @@ $products = array(
 
     }
     function display2(){
-      global $products;
+        global $products;
 
-      echo"<table><tr><th>Category</th><th>Subcategory</th><th>ID</th><th>Name</th><th>Brand</th><tr>";
-      foreach($products as $key=>$value){
+        echo"<table><tr><th>Category</th><th>Subcategory</th><th>ID</th><th>Name</th><th>Brand</th><tr>";
+        foreach($products as $key=>$value){
 
-          foreach($value as $subk=>$val){
-              if($subk=="Mobile")
+            foreach($value as $subk=>$val){
+                if($subk=="Mobile")
 
-              foreach($val as $i ){
+                foreach($val as $i ){
 
-                  echo"<tr><td>".$key."</td>".
-                 " <td>".$subk."</td>".
-                  "<td>".$i["id"]."</td>".
-                  "<td>".$i["name"]."</td>".
-                  "<td>".$i["brand"]."</td></tr>";
-                 }
-                }
+                    echo"<tr><td>".$key."</td>".
+                   " <td>".$subk."</td>".
+                    "<td>".$i["id"]."</td>".
+                    "<td>".$i["name"]."</td>".
+                    "<td>".$i["brand"]."</td></tr>";
+                   }
+                  }
 
-      }
-      echo"</table>";
-
-  }
-  function display3(){
-    global $products;
-
-    echo"<table><tr><th>Category</th><th>Subcategory</th><th>ID</th><th>Name</th><th>Brand</th><tr>";
-    foreach($products as $key=>$value){
-
-        foreach($value as $subk=>$val){
-           
-
-            foreach($val as $i ){
-                if($i["brand"]=="Samsung"){
-                echo"<tr><td>".$key."</td>".
-               " <td>".$subk."</td>".
-                "<td>".$i["id"]."</td>".
-                "<td>".$i["name"]."</td>".
-                "<td>".$i["brand"]."</td></tr>";
-            }
-               }
-              }
+        }
+        echo"</table>";
 
     }
-    echo"</table>";
 
+    function display3(){
+        global $products;
+
+        echo"<table><tr><th>Category</th><th>Subcategory</th><th>ID</th><th>Name</th><th>Brand</th><tr>";
+        foreach($products as $key=>$value){
+
+            foreach($value as $subk=>$val){
+               
+
+                foreach($val as $i ){
+                    if($i["brand"]=="Samsung"){
+                    echo"<tr><td>".$key."</td>".
+                   " <td>".$subk."</td>".
+                    "<td>".$i["id"]."</td>".
+                    "<td>".$i["name"]."</td>".
+                    "<td>".$i["brand"]."</td></tr>";
+                }
+                   }
+                  }
+
+        }
+        echo"</table>";
+
+    }
+
+function delete(){
+    global $products;
+    foreach($products as $key => $cate)
+{
+    foreach($cate as $key2 => $sub)
+    {
+        foreach($sub as $key3 => $item){
+            if($item["id"]=="PR003"){
+               unset($products[$key][$key2][$key3]);
+            }
+        }
+    }
 }
 
+echo "<table>";
+    echo "<tr><th>Category</th><th>Sub Category</th><th>ID</th><th>Name</th><th>Brand</th></tr>";
+    foreach($products as $key => $cate)
+    {
+        foreach($cate as $key2 => $sub)
+        {
+            foreach($sub as $key3 => $item){
+                    echo "<tr><td>$key</td><<td>$key2</td><td>$item[id]</td><td>$item[name]</td><td>$item[brand]</td>";
+                }
+        }
+    }
+    echo "</table>";
+}
+
+
+
+
     
-  
 
 ?>
 
@@ -165,9 +196,14 @@ $products = array(
     display1();
     echo "<h2>Display mobile category</h2>";
     display2();
-    echo "<h2>Display filter name category</h2>";
-display3();
-   
+
+    echo "<h2>Display mobile brand</h2>";
+    display3();
+
+    echo "<h2>Display after delete</h2>";
+    delete();
+
+
     ?>
 
     
