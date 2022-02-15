@@ -175,7 +175,28 @@ echo "<table>";
     echo "</table>";
 }
 
+function update($i){
+  global $products;
+  
+  
+  foreach($products as $key=>$value){
 
+      foreach($value as $subk=>$val){
+          
+
+          foreach($val as $v1=>$ia ){
+              if($ia["id"]==$i){
+                $products[$key][$subk][$v1]["name"]="BIG-555";
+              
+              
+          }
+             
+            }
+        
+  }
+}
+display1();
+}
 
 
     
@@ -202,7 +223,8 @@ echo "<table>";
 
     echo "<h2>Display after delete</h2>";
     delete();
-
+    echo "<h2>Display after update</h2>";
+    update("PR002");
 
     ?>
 
